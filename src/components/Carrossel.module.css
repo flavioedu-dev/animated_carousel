@@ -26,11 +26,12 @@
     filter: blur(2px);    
 }
 
-.next_project {
-    animation-name: rotacao; 
-    animation-duration: 1s;
+#next_project {
+    /* animation: rotacao 1s normal ease; */
+    /* animation-name: rotacao;  */
+    /* animation-duration: 1s;
     animation-direction: normal;
-    animation-timing-function: ease;
+    animation-timing-function: ease; */
 }
 @keyframes rotacao {
     from {
@@ -41,9 +42,8 @@
 }
 
 
-#current_project {
+.current_project {
     filter: blur(0px);
-    /* transform: translateY(-30px); */ 
 }
 
 .project_item ul {

@@ -1,6 +1,6 @@
 import styles from "./Carrossel.module.css"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export interface Project {
     id: number,
@@ -15,6 +15,8 @@ interface ICarrosselProps {
 
 
 export const Carrossel = ({ projects }: ICarrosselProps) => {
+
+    const projectItem = useRef(null)
 
     const [currentProjectId, setCurrentProjectId] = useState(2);
     const [projectsView, setProjectsView] = useState<Project[]>([]);
@@ -66,16 +68,13 @@ export const Carrossel = ({ projects }: ICarrosselProps) => {
 
     useEffect(() => {
         const actionButtons = document.querySelectorAll("button")
-        const nodeSlides = document.getElementsByClassName("slide")
-        console.log(actionButtons)
-        console.log("slidesNode: ", nodeSlides)
 
         actionButtons[1].addEventListener("click", () => {
-            console.log("cliclouoadsjf4444");
-            console.log(Array.from(nodeSlides))
-            Array.from(nodeSlides).forEach((item) => {
-                item.className += " next_project"
-            })
+            // projectItem!.style.animation = "rotacao 1s normal ease;"
+            console.log(projectItem as unknown as ChildNode)
+            let item = projectItem as unknown as ChildNode
+            projectItem.current?.focus()
+            
         })
     }, [])
 
@@ -84,7 +83,7 @@ export const Carrossel = ({ projects }: ICarrosselProps) => {
             <button onClick={backProject}>Back</button>
 
             {projectsView.map((project) => (
-            <div className={`slide ${styles.project_item}`} id={project.id === currentProjectId ? styles.current_project : ""} key={project.id}>
+            <div className={`slide ${styles.project_item} ${project.id === currentProjectId ? styles.current_project : ""}`} ref={projectItem} key={project.id}>
                 <h2>{project.title}</h2>
                 <ul>
                     {project.skills.map((item, i) => (
