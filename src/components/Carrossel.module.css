@@ -1,0 +1,66 @@
+.carrossel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    transition: 1s;
+}
+
+
+.carrossel button {
+    border: none;
+    border-radius: 10px;
+    padding: .7rem 1rem;
+    background-color: #194341;
+    color: #f04c31;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.project_item {
+    background-color: #194341;
+    padding: 2rem;
+    color: #fff;
+    border-radius: 10px;
+    filter: blur(2px);    
+}
+
+.next_project {
+    animation-name: rotacao; 
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-timing-function: ease;
+}
+@keyframes rotacao {
+    from {
+        transform: translateX(0);
+    } to {
+        transform: translateX(-250px);
+    }
+}
+
+
+#current_project {
+    filter: blur(0px);
+    /* transform: translateY(-30px); */ 
+}
+
+.project_item ul {
+    list-style: none;
+    display: flex;
+    gap: .5rem;
+    margin: 1rem 0;
+}
+
+.project_item ul > li {
+    background-color: #f04c31;
+    padding: .5rem;
+    border-radius: 10px;
+    font-size: .8rem;
+}
+
+.project_item img {
+    width: 200px;
+    height: 200px;
+}
